@@ -1,0 +1,34 @@
+<form class="flex flex-col w-1/3 mt-4 ml-4">
+  <mat-form-field>
+    <mat-label>Ids</mat-label>
+    <mat-select multiple [formControl]="ids">
+      @for(id of traineeIdArr;track id){
+        <mat-option [value]="id">
+          {{id}}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Subject</mat-label>
+    <mat-select multiple [formControl]="subjects">
+      @for(subject of subjectsArr;track subject){
+        <mat-option [value]="subject">
+          {{subject}}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  </form>
+
+<div class="flex">
+<div class="w-1/3">
+  <canvas id="subjectChart"></canvas>
+</div>
+<div class="w-1/3">
+  <canvas id="traineeChart"></canvas>
+</div>
+<div class="w-1/3">
+  <canvas id="chart"></canvas>
+</div>
+</div>

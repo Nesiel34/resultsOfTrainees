@@ -11,7 +11,7 @@ describe('DataPageComponent', () => {
       imports: [DataPageComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(DataPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

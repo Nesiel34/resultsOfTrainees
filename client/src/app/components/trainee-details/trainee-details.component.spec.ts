@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MointorPageComponent } from './mointor-page.component';
+import { TraineeDetailsComponent } from './trainee-details.component';
 
-describe('MointorPageComponent', () => {
-  let component: MointorPageComponent;
-  let fixture: ComponentFixture<MointorPageComponent>;
+describe('TraineeDetailsComponent', () => {
+  let component: TraineeDetailsComponent;
+  let fixture: ComponentFixture<TraineeDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MointorPageComponent]
+      imports: [TraineeDetailsComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(MointorPageComponent);
+
+    fixture = TestBed.createComponent(TraineeDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

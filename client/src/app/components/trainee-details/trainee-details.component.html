@@ -1,0 +1,90 @@
+<form [formGroup]="traineeForm" (ngSubmit)="save()" class="flex flex-col">
+<mat-form-field>
+  <mat-label>
+    Student id
+  </mat-label>
+  <input type="tel" matInput formControlName="id"/>
+  @if(traineeForm.get('id')?.hasError('required')){
+    <mat-error>Student id is required</mat-error>
+  }
+</mat-form-field>
+<mat-form-field>
+  <mat-label>
+    Name
+  </mat-label>
+  <input type="text" matInput formControlName="name"/>
+  @if(traineeForm.get('name')?.hasError('required')){
+    <mat-error>Name is required</mat-error>
+  }
+</mat-form-field>
+<mat-form-field>
+  <mat-label>
+    Grade
+  </mat-label>
+  <input type="tel" matInput formControlName="grade" maxlength="3"/>
+  @if(traineeForm.get('grade')?.hasError('required')){
+    <mat-error>Grade is required</mat-error>
+  }
+  @if(traineeForm.get('grade')?.hasError('min')){
+    <mat-error>Minimum grade is 0</mat-error>
+  }
+  @if(traineeForm.get('grade')?.hasError('max')){
+    <mat-error>Maximum grade is 100</mat-error>
+  }
+</mat-form-field>
+<mat-form-field>
+  <mat-label>
+    Email
+  </mat-label>
+  <input type="email" matInput formControlName="email"/>
+  @if(traineeForm.get('email')?.hasError('email')){
+    <mat-error>Please enter a valid email</mat-error>
+  }
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Date</mat-label>
+  <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="date">
+  <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  @if(traineeForm.get('date')?.hasError('required')){
+    <mat-error>Date is required</mat-error>
+  }
+</mat-form-field>
+<mat-form-field>
+  <mat-label>
+    Address
+  </mat-label>
+  <input type="text" matInput formControlName="address"/>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>
+    City
+  </mat-label>
+  <input type="text" matInput formControlName="city"/>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>
+    Country
+  </mat-label>
+  <input type="text" matInput formControlName="country"/>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>
+    Zip
+  </mat-label>
+  <input type="text" matInput formControlName="zip"/>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>
+    Subject
+  </mat-label>
+  <input type="text" matInput formControlName="subject"/>
+  @if(traineeForm.get('subject')?.hasError('required')){
+    <mat-error>Subject is required</mat-error>
+  }
+</mat-form-field>
+<div class="flex gap-2 mt-2">
+  <button mat-flat-button>Save</button>
+  <button type="button" mat-stroked-button (click)="close()">Close</button>
+</div>
+</form>

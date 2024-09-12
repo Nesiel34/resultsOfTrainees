@@ -1,0 +1,50 @@
+<div class="flex gap-2 mt-2 pr-4">
+<div [class]="showDetails?'w-9/12':'w-full'">
+  <mat-card>
+    <mat-card-header>
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput [formControl]="filter"/>
+      </mat-form-field>
+      <div class="flex gap-2 ml-2">
+    <button mat-flat-button (click)="addTrainee()">Add</button>
+    <button mat-stroked-button (click)="remove()">Remove</button>
+  </div>
+
+  </mat-card-header>
+<mat-card-content>
+
+
+<mat-table mat-table [dataSource]="dataSource">
+  @for(col of columnsTable;track col.key){
+      <ng-container [matColumnDef]="col.key">
+        <mat-header-cell *matHeaderCellDef>{{col.header}} </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          @if(col.isDate){
+            {{row[col.key]|date:"dd.MM.YYYY"}}
+          }
+          @else {
+            {{row[col.key]}}
+          }
+        </mat-cell>
+      </ng-container>
+  }
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row;let i=index;columns: displayedColumns;" (click)="chooseTrainee(row,i)" [class]="i === rowId()?'!bg-[#005cbb] !text-white':''" ></mat-row>
+</mat-table>
+<mat-paginator [pageSizeOptions]="[10]"
+showFirstLastButtons>
+</mat-paginator>
+</mat-card-content>
+
+</mat-card>
+
+</div>
+@if(showDetails){
+<div class="w-3/12">
+ <mat-card>
+<app-trainee-details class="p-4" (closeForm)="close()" [rowId]="rowId()" [trainee]="currentTrainee()"></app-trainee-details>
+ </mat-card>
+</div>
+}
+</div>

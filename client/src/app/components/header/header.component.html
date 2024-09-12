@@ -1,1 +1,7 @@
-<p class="underline">header works!</p>
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  @for (link of links; track link) {
+    <a mat-tab-link
+      [active]="activeLink == link" [routerLink]="['/'+link]"> {{link}} </a>
+  }
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
